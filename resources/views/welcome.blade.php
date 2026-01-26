@@ -31,6 +31,237 @@
             line-height: 1.6;
         }
 
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(253, 253, 248, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--border);
+            z-index: 1000;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--ink);
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-brand:hover {
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--slate);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--ink);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--accent);
+        }
+
+        /* Auth buttons */
+        .nav-auth {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .nav-btn {
+            padding: 0.6rem 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 2px solid var(--border);
+            background: transparent;
+            color: var(--ink);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-btn:hover {
+            background: var(--ink);
+            color: var(--paper);
+            border-color: var(--ink);
+        }
+
+        .nav-btn-primary {
+            background: var(--ink);
+            color: var(--paper);
+            border-color: var(--ink);
+        }
+
+        .nav-btn-primary:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--ink);
+        }
+
+        /* User dropdown */
+        .user-dropdown {
+            position: relative;
+        }
+
+        .user-trigger {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1rem;
+            background: transparent;
+            border: 2px solid var(--border);
+            color: var(--ink);
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .user-trigger:hover {
+            background: var(--ink);
+            color: var(--paper);
+            border-color: var(--ink);
+        }
+
+        .user-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--ink);
+            font-weight: 700;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            background: var(--paper);
+            border: 2px solid var(--border);
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: var(--slate);
+            text-decoration: none;
+            font-size: 0.85rem;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        .dropdown-item.logout {
+            color: var(--ruby);
+        }
+
+        .dropdown-item.logout:hover {
+            background: var(--ruby);
+            color: var(--paper);
+        }
+
+        /* Mobile menu toggle */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: 2px solid var(--border);
+            padding: 0.5rem;
+            cursor: pointer;
+            color: var(--ink);
+        }
+
+        .mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--ink);
+            margin: 4px 0;
+            transition: all 0.3s ease;
+        }
+
         /* Animated gradient background */
         .hero {
             min-height: 100vh;
@@ -43,6 +274,7 @@
                 linear-gradient(225deg, rgba(230, 57, 70, 0.03) 0%, transparent 50%),
                 var(--paper);
             overflow: hidden;
+            padding-top: 80px;
         }
 
         /* Animated grid pattern */
@@ -422,6 +654,70 @@
         }
 
         /* Responsive */
+        @media (max-width: 968px) {
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--paper);
+                border-bottom: 2px solid var(--border);
+                flex-direction: column;
+                padding: 1rem 0;
+                gap: 0;
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: all 0.3s ease;
+            }
+
+            .nav-menu.active {
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+
+            .nav-menu li {
+                width: 100%;
+                text-align: center;
+                padding: 1rem;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-auth {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav-btn {
+                width: 90%;
+                margin: 0 auto;
+            }
+
+            .user-dropdown {
+                width: 100%;
+            }
+
+            .user-trigger {
+                width: 90%;
+                margin: 0 auto;
+                justify-content: center;
+            }
+
+            .dropdown-menu {
+                position: static;
+                width: 90%;
+                margin: 0.5rem auto 0;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+            }
+        }
+
         @media (max-width: 768px) {
             .feature-card {
                 padding: 2rem;
@@ -461,6 +757,58 @@
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="{{ route('home') }}" class="nav-brand">Maharlika</a>
+            
+            <button class="mobile-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
+                <li><a href="{{ route('api.documentation') }}" class="nav-link {{ request()->routeIs('api.documentation') ? 'active' : '' }}">Documentation</a></li>
+                <li><a href="https://github.com/joshdevkit/maharlika-framework" class="nav-link">GitHub</a></li>
+                
+                <div class="nav-auth">
+                    @auth
+                        <!-- Authenticated user -->
+                        <div class="user-dropdown">
+                            <button class="user-trigger">
+                                <span class="user-icon">{{ strtoupper(substr(auth()->user()->name, 0, 1)) }}</span>
+                                <span>{{ auth()->user()->name }}</span>
+                            </button>
+                            <div class="dropdown-menu">
+                                @if (Route::has('dashboard'))
+                                    <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
+                                @endif
+                                <a href="{{ route('profile') }}" class="dropdown-item">Profile</a>
+                                <a href="{{ route('settings') }}" class="dropdown-item">Settings</a>
+                                <form method="POST" action="{{ route('logout') }}" style="margin: 0;">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item logout" style="width: 100%; text-align: left; background: none; border: none; cursor: pointer; font: inherit;">
+                                        Logout
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    @else
+                        <!-- Guest user -->
+                        @if (Route::has('login'))
+                            <a href="{{ route('login') }}" class="nav-btn">Login</a>
+                        @endif
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="nav-btn nav-btn-primary">Register</a>
+                        @endif
+                    @endauth
+                </div>
+            </ul>
+        </div>
+    </nav>
+
     <div class="hero">
         <div class="container">
             <div class="logo-section">
@@ -512,14 +860,14 @@
 <span class="code-line"><span class="operator">&lt;</span><span class="keyword">x-layout</span><span class="operator">&gt;</span></span>
 <span class="code-line">    <span class="operator">&lt;</span><span class="keyword">x-card</span> <span class="variable">:title</span><span class="operator">=</span><span class="string">"$pageTitle"</span><span class="operator">&gt;</span></span>
 <span class="code-line"><span class="comment">// this will render the action from your component if present.</span></span>
-<span class="code-line">        <span class="function">&lcub;&lcub; $this->getContent() &rcub;&rcub;</span></span>
+<span class="code-line">        <span class="function">{{ $this->getContent() }}</span></span>
 <span class="code-line">    <span class="operator">&lt;/</span><span class="keyword">x-card</span><span class="operator">&gt;</span></span>
 <span class="code-line"><span class="operator">&lt;/</span><span class="keyword">x-layout</span><span class="operator">&gt;</span></span></code></pre>
             </div>
 
             <div class="stats">
                 <div class="stat-item">
-                    <span class="stat-number">< 1ms</span>
+                    <span class="stat-number">&lt; 1ms</span>
                     <span class="stat-label">Average Response</span>
                 </div>
                 <div class="stat-item">
@@ -534,7 +882,7 @@
 
             <div class="cta-section">
                 <div class="cta-buttons">
-                    <a href="/api/documentation" class="btn">
+                    <a href="{{ route('api.documentation') }}" class="btn">
                         <span>View Api Documentation</span>
                     </a>
                     <a href="https://github.com/joshdevkit/maharlika-framework" class="btn">
@@ -546,12 +894,29 @@
     </div>
 
     <footer class="footer">
-        <p>Maharlika Framework &copy; 2026 - Crafted for modern PHP developers</p>
+        <p>Maharlika Framework &copy; {{ date('Y') }} - Crafted for modern PHP developers</p>
         <div class="footer-links">
-            <a href="#" class="footer-link">Documentation</a>
-            <a href="/api/documentation" class="footer-link">API Reference</a>
+            <a href="{{ route('documentation') }}" class="footer-link">Documentation</a>
+            <a href="{{ route('api.documentation') }}" class="footer-link">API Reference</a>
             <a href="https://github.com/joshdevkit/maharlika-framework" class="footer-link">GitHub</a>
         </div>
     </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navMenu = document.getElementById('navMenu');
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            
+            if (!navMenu.contains(event.target) && !mobileToggle.contains(event.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
