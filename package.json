@@ -1,0 +1,37 @@
+{
+  "name": "framework",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "@vitejs/plugin-react": "^5.1.2",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-react": "^7.37.3",
+    "eslint-plugin-react-hooks": "^7.0.0",
+    "autoprefixer": "^10.4.22",
+    "laravel-vite-plugin": "^2.0.1",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.18",
+    "vite": "^7.3.0"
+  },
+  "dependencies": {
+    "@inertiajs/react": "^2.3.1",
+    "alpinejs": "^3.15.1",
+    "axios": "^1.13.2",
+    "bootstrap": "^5.3.8",
+    "laravel-echo": "^2.2.6",
+    "lucide": "^0.554.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.0"
+  }
+}

@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * --------------------------------------------------------------
+ * Framework CLI Entry Point
+ * --------------------------------------------------------------
+ * This script serves as the command line interface for the custom
+ * framework. It initializes the application, loads the service
+ * container, and triggers execution of console commands.
+ * The CLI integrates with the same application container used by
+ * HTTP requests, allowing shared configuration and services.
+ */
+
+use Maharlika\Console\Application;
+
+$program = require __DIR__ . '/bootstrapper/entry.php';
+
+$cli = new Application($program, BASE_PATH);
+
+exit($cli->run($argv));
