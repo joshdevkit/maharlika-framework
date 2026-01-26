@@ -334,7 +334,7 @@ Full documentation is available at [maharlika-framework.dev](https://maharlika-f
 - [x] Component system
 - [x] Query builder
 - [x] Migration system
-- [ ] Authentication scaffolding
+- [x] Authentication scaffolding
 - [x] Email system
 - [x] Queue system
 - [x] WebSocket support

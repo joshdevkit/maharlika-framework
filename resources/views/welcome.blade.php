@@ -760,7 +760,7 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="{{ route('home') }}" class="nav-brand">Maharlika</a>
+            <a href="/" class="nav-brand">Maharlika</a>
             
             <button class="mobile-toggle" onclick="toggleMobileMenu()">
                 <span></span>
@@ -769,8 +769,8 @@
             </button>
 
             <ul class="nav-menu" id="navMenu">
-                <li><a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
-                <li><a href="{{ route('api.documentation') }}" class="nav-link {{ request()->routeIs('api.documentation') ? 'active' : '' }}">Documentation</a></li>
+                <li><a href="/" class="nav-link active">Home</a></li>
+                <li><a href="/api/documentation" class="nav-link">Documentation</a></li>
                 <li><a href="https://github.com/joshdevkit/maharlika-framework" class="nav-link">GitHub</a></li>
                 
                 <div class="nav-auth">
@@ -783,11 +783,11 @@
                             </button>
                             <div class="dropdown-menu">
                                 @if (Route::has('dashboard'))
-                                    <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
+                                    <a href="{{ router('dashboard') }}" class="dropdown-item">Dashboard</a>
                                 @endif
-                                <a href="{{ route('profile') }}" class="dropdown-item">Profile</a>
-                                <a href="{{ route('settings') }}" class="dropdown-item">Settings</a>
-                                <form method="POST" action="{{ route('logout') }}" style="margin: 0;">
+                                <a href="#" class="dropdown-item">Profile</a>
+                                <a href="#" class="dropdown-item">Settings</a>
+                                <form method="POST" action="{{ router('logout') }}" style="margin: 0;">
                                     @csrf
                                     <button type="submit" class="dropdown-item logout" style="width: 100%; text-align: left; background: none; border: none; cursor: pointer; font: inherit;">
                                         Logout
@@ -798,10 +798,10 @@
                     @else
                         <!-- Guest user -->
                         @if (Route::has('login'))
-                            <a href="{{ route('login') }}" class="nav-btn">Login</a>
+                            <a href="{{ router('login') }}" class="nav-btn">Login</a>
                         @endif
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="nav-btn nav-btn-primary">Register</a>
+                            <a href="{{ router('register') }}" class="nav-btn nav-btn-primary">Register</a>
                         @endif
                     @endauth
                 </div>
@@ -860,7 +860,7 @@
 <span class="code-line"><span class="operator">&lt;</span><span class="keyword">x-layout</span><span class="operator">&gt;</span></span>
 <span class="code-line">    <span class="operator">&lt;</span><span class="keyword">x-card</span> <span class="variable">:title</span><span class="operator">=</span><span class="string">"$pageTitle"</span><span class="operator">&gt;</span></span>
 <span class="code-line"><span class="comment">// this will render the action from your component if present.</span></span>
-<span class="code-line">        <span class="function">{{ $this->getContent() }}</span></span>
+<span class="code-line">        <span class="function">&lcub;&lcub; $this->getContent() &rcub;&rcub;</span></span>
 <span class="code-line">    <span class="operator">&lt;/</span><span class="keyword">x-card</span><span class="operator">&gt;</span></span>
 <span class="code-line"><span class="operator">&lt;/</span><span class="keyword">x-layout</span><span class="operator">&gt;</span></span></code></pre>
             </div>
@@ -882,7 +882,7 @@
 
             <div class="cta-section">
                 <div class="cta-buttons">
-                    <a href="{{ route('api.documentation') }}" class="btn">
+                    <a href="/api/documentation" class="btn">
                         <span>View Api Documentation</span>
                     </a>
                     <a href="https://github.com/joshdevkit/maharlika-framework" class="btn">
@@ -896,8 +896,8 @@
     <footer class="footer">
         <p>Maharlika Framework &copy; {{ date('Y') }} - Crafted for modern PHP developers</p>
         <div class="footer-links">
-            <a href="{{ route('documentation') }}" class="footer-link">Documentation</a>
-            <a href="{{ route('api.documentation') }}" class="footer-link">API Reference</a>
+            <a href="#" class="footer-link">Documentation</a>
+            <a href="/api/documentation" class="footer-link">API Reference</a>
             <a href="https://github.com/joshdevkit/maharlika-framework" class="footer-link">GitHub</a>
         </div>
     </footer>
