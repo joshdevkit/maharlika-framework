@@ -20,10 +20,8 @@ class User extends Authentication implements MustVerifyEmail
         'provider',
         'provider_id',
         'password',
-        'role',
         'status',
         'avatar',
-        'cover_photo',
     ];
 
     /**
@@ -41,29 +39,5 @@ class User extends Authentication implements MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
-
-
-    public function post()
-    {
-        return $this->hasMany(Post::class);
-    }
-
-
-    public function scopeActive($query)
-    {
-        return $query->where('status', 'active');
-    }
-
-
-    public function chatRooms()
-    {
-        return $this->belongsToMany(ChatRoom::class, 'chat_room_members', 'user_id', 'room_id')
-            ->withTimestamps();
-    }
-
-    public function messages()
-    {
-        return $this->hasMany(ChatMessage::class, 'user_id', 'id');
-    }
     
 }

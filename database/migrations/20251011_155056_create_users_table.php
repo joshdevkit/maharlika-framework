@@ -14,21 +14,18 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->enum('role', ['user', 'admin'])->default('user');
             $table->enum('status', ['active', 'inactive'])->default('active');
 
             $table->string('provider')->nullable();
             $table->string('provider_id')->nullable();
             $table->string('avatar')->nullable();
 
-            $table->string('cover_photo')->nullable();
             $table->rememberToken();
             $table->datetime('email_verified_at')->nullable();
             $table->timestamps();
 
             // Add index for faster lookups
             $table->index(['provider', 'provider_id']);
-
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
@@ -39,6 +36,27 @@ return new class extends Migration
             $table->index(['email', 'token']);
         });
 
+        if (app()->isProduction()) {
+            Schema::create('blocked_ips', function (Blueprint $table) {
+                $table->id();
+                $table->string('ip_address', 45)->unique();
+                $table->string('ip_hash', 64)->index(); 
+                $table->integer('abuse_count')->default(1);
+                $table->string('reason')->default('rate_limit_abuse');
+                $table->text('user_agent')->nullable();
+                $table->string('blocked_route')->nullable();
+                $table->timestamp('blocked_at');
+                $table->timestamp('expires_at')->index(); 
+                $table->timestamp('last_attempt_at')->nullable();
+                $table->foreignId('blocked_by')->nullable()->constrained('users')->nullOnDelete(); 
+                $table->text('notes')->nullable();
+                $table->timestamps();
+
+                // Indexes for efficient queries
+                $table->index('blocked_at');
+                $table->index(['expires_at', 'ip_hash']);
+            });
+        }
 
         if (Config::get('session.driver') === 'database') {
             Schema::create(config('session.table', 'sessions'), function (Blueprint $table) {
@@ -55,7 +73,6 @@ return new class extends Migration
             });
         }
 
-
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->string('queue')->index();
@@ -65,7 +82,6 @@ return new class extends Migration
             $table->unsignedInteger('available_at');
             $table->unsignedInteger('created_at');
         });
-
 
         Schema::create('failed_jobs', function (Blueprint $table) {
             $table->id();
@@ -78,6 +94,10 @@ return new class extends Migration
 
     public function down(): void
     {
+        if (Schema::hasTable('blocked_ips')) {
+            Schema::dropIfExists('blocked_ips');
+        }
+        
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
