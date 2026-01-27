@@ -2,7 +2,6 @@
 /node_modules/
 /.idea/
 /.vscode/
-.env
 .env.backup
 .phpunit.result.cache
 composer.lock
@@ -12,3 +11,5 @@ package-lock.json
 *~
 .DS_Store
 Thumbs.db
+.github
+config.bat
