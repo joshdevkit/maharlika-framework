@@ -46,7 +46,8 @@ return new class extends Migration
                 $table->text('user_agent')->nullable();
                 $table->string('blocked_route')->nullable();
                 $table->timestamp('blocked_at');
-                $table->timestamp('expires_at')->index(); 
+                //programmatically designed to configure on production server
+                $table->timestamp('expires_at')->nullable()->index(); 
                 $table->timestamp('last_attempt_at')->nullable();
                 $table->foreignId('blocked_by')->nullable()->constrained('users')->nullOnDelete(); 
                 $table->text('notes')->nullable();
@@ -58,6 +59,7 @@ return new class extends Migration
             });
         }
 
+        // production table for session handling, retrieve devices used to login
         if (Config::get('session.driver') === 'database') {
             Schema::create(config('session.table', 'sessions'), function (Blueprint $table) {
                 $table->string('id')->primary();
@@ -73,6 +75,7 @@ return new class extends Migration
             });
         }
 
+        // your database queues, mails, production settings: Auto delete, update etc. (via scheduler)
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->string('queue')->index();
