@@ -51,7 +51,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Here you may configure the symbolic links that will be created when the
-    | `storage:link` Artisan command is executed. The array keys should be
+    | `storage:link` Maharlika command is executed. The array keys should be
     | the locations of the links and the values should be their targets.
     |
     */
