@@ -99,8 +99,7 @@ my-app/
 ├── public/              # Public assets
 ├── resources/
 │   └── views/           # Blade templates
-├── routes/              # Route definitions
-└── storage/             # Logs, cache, sessions
+|── storage/             # Logs, cache, sessions
 ```
 
 ## 🚦 Quick Examples
