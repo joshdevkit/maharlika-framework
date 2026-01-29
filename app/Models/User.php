@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Maharlika\Auth\Authentication;
-// use Maharlika\Auth\Traits\HasApiTokens;
+// use Maharlika\Auth\Traits\TokenProvider;
 use Maharlika\Contracts\Auth\MustVerifyEmail;
 use Maharlika\Database\Traits\HasFactory;
 use Maharlika\Notifications\Notifiable;
