@@ -60,6 +60,7 @@ class UserController
 - Intelligent query caching
 - Minimal memory footprint
 - Production-ready from day one
+- Automatic Routing, discover route prefix and route naming convention
 
 ## 📦 Installation
 
@@ -99,7 +100,6 @@ my-app/
 ├── public/              # Public assets
 ├── resources/
 │   └── views/           # Blade templates
-├── routes/              # Route definitions
 └── storage/             # Logs, cache, sessions
 ```
 
