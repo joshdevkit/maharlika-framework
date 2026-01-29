@@ -174,7 +174,7 @@ class Alert extends Component
 
 ```blade
 <!-- resources/views/components/alert.blade.php -->
-<div class="alert {{ $component->getColorClass() }}">
+<div class="alert {{ $this->getColorClass() }}">
     {{ $message }}
 </div>
 ```
@@ -314,18 +314,13 @@ php maharlika routes              # List all routes
 
 # Cache management
 php maharlika cache:clear         # Clear application cache
+
+and more cli available, type php maharlika command
 ```
 
 ## 📚 Documentation
 
-Full documentation is available at [maharlika-framework.dev](https://maharlika-framework.dev)
-
-- [Getting Started](https://maharlika-framework.dev/docs/getting-started)
-- [Routing Guide](https://maharlika-framework.dev/docs/routing)
-- [Blade Templates](https://maharlika-framework.dev/docs/blade)
-- [Database & Models](https://maharlika-framework.dev/docs/database)
-- [Component System](https://maharlika-framework.dev/docs/components)
-- [API Reference](https://maharlika-framework.dev/api)
+Full documentation is not yet available
 
 ## 🎯 Roadmap
 
@@ -391,7 +386,7 @@ Maharlika Framework is open-sourced software licensed under the [MIT license](LI
 
 <div align="center">
 
-**Built with ❤️ by developers, for developers**
+**Built with ❤️ by developer, for developers**
 
 [⭐ Star us on GitHub](https://github.com/joshdevkit/maharlika-framework)
 
