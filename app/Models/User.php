@@ -2,15 +2,18 @@
 
 namespace App\Models;
 
-use Maharlika\Auth\Authentication;
-// use Maharlika\Auth\Traits\TokenProvider;
+// use App\Observers\UserObserver;
+use Maharlika\Auth\Authentication as Model;
+use Maharlika\Auth\Traits\TokenProvider;
 use Maharlika\Contracts\Auth\MustVerifyEmail;
+// use Maharlika\Database\Attributes\Observer;
 use Maharlika\Database\Traits\HasFactory;
 use Maharlika\Notifications\Notifiable;
 
-class User extends Authentication implements MustVerifyEmail
+// #[Observer(UserObserver::class)]
+class User extends Model implements MustVerifyEmail
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, TokenProvider;
     /**
      * The attributes that are mass assignable.
      */
