@@ -13,9 +13,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        View::directive('time', function ($expression = null) {
+        View::directive('headerclock', function ($expression = null) {
             if ($expression === null) {
-                $this->buildLiveClock();
+                return $this->renderRealtimeClock();
             }
         });
     }
@@ -32,8 +32,7 @@ class AppServiceProvider extends ServiceProvider
         Model::shouldBeStrict(!app()->isProduction());
     }
 
-
-    protected function buildLiveClock()
+    protected function renderRealtimeClock(): string
     {
         return '<span class="live-clock"></span>
                 <script>

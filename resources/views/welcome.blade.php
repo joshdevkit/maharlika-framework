@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maharlika Framework - Modern PHP Development</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="{{ asset('style.css') }}">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('style.css') }}">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="/" class="nav-brand">Maharlika</a>
-            <p>@time</p>
+            <!-- LIVE CLOCK -->
+            @headerclock
+            <!-- END OF LIVE CLOCK -->
             <button class="mobile-toggle" onclick="toggleMobileMenu()">
                 <span></span>
                 <span></span>
